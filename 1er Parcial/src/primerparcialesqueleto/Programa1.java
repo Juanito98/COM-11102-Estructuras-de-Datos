@@ -46,7 +46,7 @@ public class Programa1 {
         frase = "    A n i T A LAVAlatinA";
         analiza(frase);
         /*Si deberia ser reconocido como palíndromo: */
-        frase = "3  2 1A n i T A LAVAlatinA123 0";
+        frase = "1   2  3A n i T A LAVAlatinA123 0";
         analiza(frase);
     }
 
