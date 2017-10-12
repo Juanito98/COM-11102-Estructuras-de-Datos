@@ -8,8 +8,8 @@ import java.util.*;
 
 public class Solver {
     
-    private static Stack < Double > numbers;
-    private static Stack < Character > tokens;
+    private static ArrayStack < Double > numbers;
+    private static ArrayStack < Character > tokens;
 
     private static void execute(char c) {
         double b = numbers.peek();
@@ -29,7 +29,7 @@ public class Solver {
     private static int value(char c) {
         switch (c) {
             case '+' : case '-' : return 1;
-            case '*' : case '/' : return 2;
+            case 'x' : case '/' : return 2;
             case '^' : return 3;
             default : return -1;
         }
@@ -44,7 +44,7 @@ public class Solver {
             }
             tokens.pop();
         } else {
-            while(!tokens.empty() && value(tokens.peek()) >= value(c)) {
+            while(!tokens.isEmpty() && value(tokens.peek()) >= value(c)) {
                 execute(tokens.peek());
                 tokens.pop();
             }
@@ -53,8 +53,8 @@ public class Solver {
     }
     
     public static double solve(String st) {
-        numbers = new Stack<>();
-        tokens = new Stack<>();
+        numbers = new ArrayStack<>(st.length());
+        tokens = new ArrayStack<>(st.length());
         double num = 0, pot = 1;
         boolean newNumber = false;
         for(int i = 0; i < st.length(); i++) {
@@ -81,7 +81,7 @@ public class Solver {
             }
         }
         if(newNumber) numbers.push(num);
-        while(!tokens.empty()) {
+        while(!tokens.isEmpty()) {
             execute(tokens.peek());
             tokens.pop();
         }
