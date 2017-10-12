@@ -396,7 +396,7 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_cuatroActionPerformed
 
     private void igualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_igualActionPerformed
-        textArea1.append("=");
+        jTextField1.setText("" + Solver.solve(textArea1.getText()));
     }//GEN-LAST:event_igualActionPerformed
 
     private void borraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borraActionPerformed
@@ -438,7 +438,7 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_sumaActionPerformed
 
     private void mmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmActionPerformed
-        // TODO add your handling code here:
+        textArea1.append("n");
     }//GEN-LAST:event_mmActionPerformed
 
     /**
