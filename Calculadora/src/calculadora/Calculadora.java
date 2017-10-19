@@ -556,9 +556,9 @@ public class Calculadora extends javax.swing.JFrame {
     private void textArea1TextValueChanged(java.awt.event.TextEvent evt) {//GEN-FIRST:event_textArea1TextValueChanged
         String s = textArea1.getText();
         if(s.length() > 0 && s.charAt(s.length() - 1) == '\n') {
-            textArea1.setText(s.substring(0, s.length() - 1));
-            textArea1.setCaretPosition(s.length() - 1);
+            borraActionPerformed(null);
             igualActionPerformed(null);
+            textArea1.setCaretPosition(s.length() - 1);
         }
     }//GEN-LAST:event_textArea1TextValueChanged
 

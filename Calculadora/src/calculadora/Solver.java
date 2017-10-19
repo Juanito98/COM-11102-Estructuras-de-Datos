@@ -70,19 +70,22 @@ public class Solver {
         if(value(c) == -1) 
             throw new TokenException("Unexpected Token. ");
         try {
-            if(c == '(') tokens.push(c);
-            else if(c == ')') {
-                while(tokens.peek() != '(') {
-                    execute(tokens.peek());
-                    tokens.pop();
-                }
-                tokens.pop();
-            } else {
-                while(!tokens.isEmpty() && value(tokens.peek()) >= value(c)) {
-                    execute(tokens.peek());
-                    tokens.pop();
-                }
-                tokens.push(c);
+            switch (c) {
+                case '(':
+                    tokens.push(c);
+                    break;
+                case ')':
+                    while(tokens.peek() != '(') {
+                        execute(tokens.peek());
+                        tokens.pop();
+                    }   tokens.pop();
+                    break;
+                default:
+                    while(!tokens.isEmpty() && value(tokens.peek()) >= value(c)) {
+                        execute(tokens.peek());
+                        tokens.pop();
+                    }   tokens.push(c);
+                    break;
             }
         } catch(RuntimeException e) {
             if(e.getMessage().equals("Math Error. División por 0."))
