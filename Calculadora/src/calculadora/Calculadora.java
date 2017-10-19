@@ -62,6 +62,7 @@ public class Calculadora extends javax.swing.JFrame {
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(207, 240, 248));
         jTextField1.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 24)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         dos.setBackground(new java.awt.Color(153, 153, 153));
         dos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -174,7 +175,20 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        textArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textArea1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
+        textArea1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                textArea1InputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+        textArea1.addTextListener(new java.awt.event.TextListener() {
+            public void textValueChanged(java.awt.event.TextEvent evt) {
+                textArea1TextValueChanged(evt);
+            }
+        });
 
         borra.setActionCommand("<<");
         borra.setBackground(new java.awt.Color(204, 204, 204));
@@ -474,6 +488,7 @@ public class Calculadora extends javax.swing.JFrame {
             jTextField1.setText("" + sol);
             //textArea1.setText("" + sol);
         } catch(Exception e) {
+            jTextField1.setText("Error.");
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_igualActionPerformed
@@ -519,7 +534,11 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_sumaActionPerformed
 
     private void mmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmActionPerformed
-        textArea1.append("─");
+        String s = textArea1.getText();
+        if(s.length() > 0 && s.charAt(s.length() - 1) == '─')
+            borraActionPerformed(null);
+        else
+            textArea1.append("─");
     }//GEN-LAST:event_mmActionPerformed
 
     private void puntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puntoActionPerformed
@@ -529,6 +548,19 @@ public class Calculadora extends javax.swing.JFrame {
     private void exponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exponenteActionPerformed
         textArea1.append("^");
     }//GEN-LAST:event_exponenteActionPerformed
+
+    private void textArea1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_textArea1InputMethodTextChanged
+        
+    }//GEN-LAST:event_textArea1InputMethodTextChanged
+
+    private void textArea1TextValueChanged(java.awt.event.TextEvent evt) {//GEN-FIRST:event_textArea1TextValueChanged
+        String s = textArea1.getText();
+        if(s.length() > 0 && s.charAt(s.length() - 1) == '\n') {
+            textArea1.setText(s.substring(0, s.length() - 1));
+            textArea1.setCaretPosition(s.length() - 1);
+            igualActionPerformed(null);
+        }
+    }//GEN-LAST:event_textArea1TextValueChanged
 
     /**
      * @param args the command line arguments

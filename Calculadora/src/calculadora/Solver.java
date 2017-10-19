@@ -17,7 +17,7 @@ public class Solver {
         return (double) tmp / factor;
     }
     
-    private static void execute(char c) throws TokenException {
+    private static void execute(char c) throws RuntimeException {
         double a, b;
         try {
             b = numbers.peek();
@@ -39,7 +39,7 @@ public class Solver {
                 break;
             case '/' : 
                 if(b == 0) 
-                    throw new RuntimeException("Math Error, división por 0.");
+                    throw new RuntimeException("Math Error. División por 0.");
                 numbers.push(a / b); 
                 break;
             case '^' : 
@@ -85,7 +85,10 @@ public class Solver {
                 tokens.push(c);
             }
         } catch(RuntimeException e) {
-            throw new TokenException("El número de operandos no coincide con el número esperado de operadores.");
+            if(e.getMessage().equals("Math Error. División por 0."))
+                throw e;
+            else 
+                throw new TokenException("El número de operandos no coincide con el número esperado de operadores.");
         }
     }
     
@@ -98,7 +101,7 @@ public class Solver {
         boolean newNumber = false;
         for(int i = 0; i < st.length(); i++) {
             char c = st.charAt(i); 
-            if(c == ' ' || c == '\n') continue;
+            if(c == ' ' || c == '\n' || c == '\r') continue;
             if(c >= '0' && c <= '9') {
                 newNumber = true;
                 if(pot >= 1) {
