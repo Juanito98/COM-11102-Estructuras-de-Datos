@@ -20,7 +20,8 @@ public class ArrayStack <T> implements StackADT <T> {
     public ArrayStack() { this(100); }
     private void expandCapacity() {
         T[] nuevo = (T[])(new Object[stack.length * 2]);
-        for(int i = 0; i < stack.length; i++) nuevo[i] = stack[i];
+        for(int i = 0; i < stack.length; i++) 
+            nuevo[i] = stack[i];
         stack = nuevo;
     }
     
