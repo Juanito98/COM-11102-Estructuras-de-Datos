@@ -56,6 +56,7 @@ public class Calculadora extends javax.swing.JFrame {
         exponente = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -178,10 +179,10 @@ public class Calculadora extends javax.swing.JFrame {
         textArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textArea1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 18)); // NOI18N
         textArea1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 textArea1InputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         textArea1.addTextListener(new java.awt.event.TextListener() {
