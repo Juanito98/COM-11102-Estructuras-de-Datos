@@ -10,10 +10,10 @@ public class Solver {
     private static ArrayStack < Double > numbers;
     private static ArrayStack < Character > tokens;
 
-    private static double round(double value, int places) {
-        long factor = (long) Math.pow(10, places);
-        value = value * factor;
-        long tmp = Math.round(value);
+    private static double round(double v, int p) {
+        long factor = (long) Math.pow(10, p);
+        v = v * factor;
+        long tmp = Math.round(v);
         return (double) tmp / factor;
     }
     
@@ -75,7 +75,7 @@ public class Solver {
                     tokens.push(c);
                     break;
                 case ')':
-                    while(tokens.peek() != '(') {
+                    while(!tokens.peek().equals('(')) {
                         execute(tokens.peek());
                         tokens.pop();
                     }   tokens.pop();
