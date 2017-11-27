@@ -3,9 +3,11 @@ import java.util.*;
 
 public class Sudoku {
     
-    private static int n, sqrt_n;
+    private static final int n = 9, sqrt_n = 3;
     private static int[][] sudo;
-    private static boolean[][] row, column, subgrid;
+    private static SetADT < Integer > row[] = new SetADT[n];
+    private static SetADT < Integer > column[] = new SetADT[n];
+    private static SetADT < Integer > subgrid[] = new SetADT[n];
     
     private static int f(int i, int j) {
         return i/sqrt_n * sqrt_n + j/sqrt_n;
@@ -13,14 +15,20 @@ public class Sudoku {
     
     public static void erase(int i, int j) {
         int x = sudo[i][j];
-        row[i][x] = column[j][x] = subgrid[f(i, j)][x] = false;
+        row[i].remove(x);
+        column[j].remove(x);
+        subgrid[f(i, j)].remove(x);
         sudo[i][j] = 0;
     }
     
     private static boolean insert(int i, int j, int x) {
-        if(x < 1 || x > n) return false;
-        if(row[i][x] || column[j][x] || subgrid[f(i, j)][x]) return false;
-        row[i][x] = column[j][x] = subgrid[f(i, j)][x] = true;
+        if(x < 1 || x > n) 
+            return false;
+        if(row[i].contains(x) || column[j].contains(x) || subgrid[f(i, j)].contains(x))
+            return false;
+        row[i].add(x);
+        column[j].add(x);
+        subgrid[f(i, j)].add(x);
         sudo[i][j] = x;
         return true;
     }
@@ -45,12 +53,12 @@ public class Sudoku {
     }
     
     public static int[][] solve(int matriz[][]) throws RuntimeException {
-        n = 9;
-        sqrt_n = (int) Math.sqrt(n);
-        sudo = new int[n][n];
-        row = new boolean[n][n + 1];
-        column = new boolean[n][n + 1];
-        subgrid = new boolean[n][n + 1];
+        sudo = new int[n][n];        
+        for(int i = 0; i < n; i++) {
+            row[i] = new ArraySet<>();
+            column[i] = new ArraySet<>();
+            subgrid[i] = new ArraySet<>();
+        }
         
         for(int i = 0; i < n; i++)
             for(int j = 0; j < n; j++) {
