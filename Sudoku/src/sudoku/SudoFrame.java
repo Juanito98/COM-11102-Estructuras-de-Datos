@@ -1038,6 +1038,7 @@ public class SudoFrame extends javax.swing.JFrame {
             for(int i = 0; i < n; i++) {
                 for(int j = 0; j < n; j++) {
                     String s = arr[cnt].getText();
+                    arr[cnt].setForeground(Color.black);
                     if(s.length() == 0) {
                         s = "0";
                         arr[cnt].setForeground(Color.red);
@@ -1058,6 +1059,7 @@ public class SudoFrame extends javax.swing.JFrame {
                     cnt++;
                 }
             }
+            JOptionPane.showMessageDialog(null, "Sudoku resuelto.");
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
             if(e.getClass().getSimpleName().equals("InvalidSudokuException")) 
