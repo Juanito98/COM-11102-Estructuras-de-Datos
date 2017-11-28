@@ -52,7 +52,7 @@ public class Sudoku {
         }
     }
     
-    public static int[][] solve(int matriz[][]) throws RuntimeException {
+    public static int[][] solve(int matriz[][]) throws Exception {
         sudo = new int[n][n];        
         for(int i = 0; i < n; i++) {
             row[i] = new ArraySet<>();
@@ -65,7 +65,7 @@ public class Sudoku {
                 int x = matriz[i][j];
                 if(x != 0) {
                     if(!insert(i, j, x)) 
-                        throw new RuntimeException("Sudoku inválido.\n Problema con la casilla ("+(i+1)+","+(j+1)+").");
+                        throw new InvalidSudokuException(i, j, "El dígito " + x + " ya no puede ser usado.");
                 }
                 sudo[i][j] = x;
             }
@@ -73,7 +73,7 @@ public class Sudoku {
         if(solve_sudoku(0, 0))
             return sudo;
         else 
-            throw new RuntimeException("No se encontró solución al sudoku.");
+            throw new Exception("No se encontró solución al sudoku.");
     }
     
 }

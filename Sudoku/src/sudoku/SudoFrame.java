@@ -1031,24 +1031,22 @@ public class SudoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField81ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int[][] matriz = new int[n][n];
-        int cnt = 0;
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                String s = arr[cnt].getText();
-                if(s.length() == 0) 
-                    s = s + '0';                
-                if(s.length() > 1 || s.charAt(0) < '0' || s.charAt(0) > '9') {
-                    JOptionPane.showMessageDialog(null, "La casilla ("+i+","+j+") debe contener un dígito.");
-                    arr[cnt].setText("");
-                    return;
-                } else {
-                    matriz[i][j] = s.charAt(0) - '0';
-                }
-                cnt++;
-            }
-        }
         try {
+            int[][] matriz = new int[n][n];
+            int cnt = 0;
+            for(int i = 0; i < n; i++) {
+                for(int j = 0; j < n; j++) {
+                    String s = arr[cnt].getText();
+                    if(s.length() == 0) 
+                        s = "0";
+                    if(s.length() > 1 || s.charAt(0) < '0' || s.charAt(0) > '9') {
+                        throw new InvalidSudokuException(i, j, "La casilla debe contener un dígito.");
+                    } else {
+                        matriz[i][j] = s.charAt(0) - '0';
+                    }
+                    cnt++;
+                }
+            }
             matriz = Sudoku.solve(matriz);
             cnt = 0;
             for(int i = 0; i < n; i++) {
@@ -1057,8 +1055,10 @@ public class SudoFrame extends javax.swing.JFrame {
                     cnt++;
                 }
             }
-        } catch(RuntimeException e) {
+        } catch(Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
+            if(e.getClass().getSimpleName().equals("InvalidSudokuException")) 
+                arr[((InvalidSudokuException)e).getI()*9 + ((InvalidSudokuException)e).getJ()].setText("");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
