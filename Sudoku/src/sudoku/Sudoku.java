@@ -13,7 +13,7 @@ public class Sudoku {
         return i/sqrt_n * sqrt_n + j/sqrt_n;
     }
     
-    public static void erase(int i, int j) {
+    private static void erase(int i, int j) {
         int x = sudo[i][j];
         row[i].remove(x);
         column[j].remove(x);
