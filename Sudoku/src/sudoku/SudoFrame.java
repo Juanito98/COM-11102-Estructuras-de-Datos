@@ -5,6 +5,7 @@
  */
 package sudoku;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -1037,8 +1038,10 @@ public class SudoFrame extends javax.swing.JFrame {
             for(int i = 0; i < n; i++) {
                 for(int j = 0; j < n; j++) {
                     String s = arr[cnt].getText();
-                    if(s.length() == 0) 
+                    if(s.length() == 0) {
                         s = "0";
+                        arr[cnt].setForeground(Color.red);
+                    }
                     if(s.length() > 1 || s.charAt(0) < '0' || s.charAt(0) > '9') {
                         throw new InvalidSudokuException(i, j, "La casilla debe contener un dígito.");
                     } else {
@@ -1059,16 +1062,15 @@ public class SudoFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage());
             if(e.getClass().getSimpleName().equals("InvalidSudokuException")) 
                 arr[((InvalidSudokuException)e).getI()*9 + ((InvalidSudokuException)e).getJ()].setText("");
+            for(int cnt = n * n - 1; cnt >= 0; cnt--)
+                arr[cnt].setForeground(Color.black);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int cnt = 0;
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                arr[cnt].setText("");
-                cnt++;
-            }
+        for(int cnt = n * n - 1; cnt >= 0; cnt--) {
+            arr[cnt].setText("");
+            arr[cnt].setForeground(Color.black);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
