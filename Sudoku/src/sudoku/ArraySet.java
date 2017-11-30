@@ -57,7 +57,7 @@ public class ArraySet<T> implements SetADT<T> {
         return search;
     }
 
-    public T removeRandom() {
+    public T removeRandom() throws Exception {
         if(isEmpty())
             throw new EmptyCollectionException();
         else {
@@ -70,8 +70,15 @@ public class ArraySet<T> implements SetADT<T> {
         }
     }
 
-    public T remove(T target) {
-        if(isEmpty())
+    /**
+     *
+     * @param target
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public T remove(T target) throws Exception {
+        if(isEmpty()) 
             throw new EmptyCollectionException();
         else {
             int search=searchTarget(target);

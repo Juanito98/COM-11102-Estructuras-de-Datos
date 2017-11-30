@@ -20,10 +20,10 @@ public interface SetADT<T> extends Iterable<T> {
     public boolean contains (T target);
 
     /* Removes and returns a random element from this set: */
-    public T removeRandom ();
+    public T removeRandom () throws Exception;
 
     /* Removes and returns the specified element from this set: */
-    public T remove (T element);
+    public T remove (T element) throws Exception;
 
     /* Returns true if this set contains no elements: */
     public boolean isEmpty();

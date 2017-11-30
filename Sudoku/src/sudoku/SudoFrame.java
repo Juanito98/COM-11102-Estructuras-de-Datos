@@ -1039,13 +1039,13 @@ public class SudoFrame extends javax.swing.JFrame {
                 for(int j = 0; j < n; j++) {
                     String s = arr[cnt].getText();
                     arr[cnt].setForeground(Color.black);
-                    if(s.length() == 0) {
-                        s = "0";
-                        arr[cnt].setForeground(Color.red);
-                    }
-                    if(s.length() > 1 || s.charAt(0) < '0' || s.charAt(0) > '9') {
+                    if(!s.isEmpty() && (s.length() > 1 || s.charAt(0) <= '0' || s.charAt(0) > '9')){
                         throw new InvalidSudokuException(i, j, "La casilla debe contener un dígito.");
                     } else {
+                        if(s.isEmpty()) {
+                            s = "0";
+                            arr[cnt].setForeground(Color.red);
+                        }
                         matriz[i][j] = s.charAt(0) - '0';
                     }
                     cnt++;

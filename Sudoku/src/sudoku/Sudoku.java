@@ -1,8 +1,12 @@
 package sudoku;
-import java.util.*;
+
+import java.util.concurrent.TimeoutException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Sudoku {
     
+    private static long INITIAL_TIME;
     private static final int n = 9, sqrt_n = 3;
     private static int[][] sudo;
     private static SetADT < Integer > row[] = new SetADT[n];
@@ -14,11 +18,15 @@ public class Sudoku {
     }
     
     private static void erase(int i, int j) {
-        int x = sudo[i][j];
-        row[i].remove(x);
-        column[j].remove(x);
-        subgrid[f(i, j)].remove(x);
-        sudo[i][j] = 0;
+        try {
+            int x = sudo[i][j];
+            row[i].remove(x);
+            column[j].remove(x);
+            subgrid[f(i, j)].remove(x);
+            sudo[i][j] = 0;
+        } catch (Exception ex) {
+            Logger.getLogger(Sudoku.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private static boolean insert(int i, int j, int x) {
@@ -33,19 +41,17 @@ public class Sudoku {
         return true;
     }
     
-    private static boolean solve_sudoku(int i, int j) {
-        if(j >= n) { 
-            j = 0; 
-            i++; 
-        }
-        if(i >= n) 
-            return true;
+    private static boolean solve_sudoku(int i, int j) throws TimeoutException {
+        if(System.currentTimeMillis() - INITIAL_TIME > 10000)
+            throw new TimeoutException("Tiempo límite excedido. Posiblemente no tenga solución el sudoku");
+        else if(i >= n)
+            return true;            
         else if(sudo[i][j] != 0) 
             return solve_sudoku(i, j + 1);
         else {
             for(int x = 1; x <= n; x++) {
                 if(!insert(i, j, x)) continue;
-                if(solve_sudoku(i, j + 1)) return true;
+                if(solve_sudoku(j+1 < n ? i : i+1, j+1 < n ? j+1 : 0)) return true;
                 erase(i, j);
             }
             return false;
@@ -53,6 +59,7 @@ public class Sudoku {
     }
     
     public static int[][] solve(int matriz[][]) throws Exception {
+        INITIAL_TIME = System.currentTimeMillis();
         sudo = new int[n][n];        
         for(int i = 0; i < n; i++) {
             row[i] = new ArraySet<>();
