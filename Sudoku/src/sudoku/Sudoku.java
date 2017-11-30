@@ -47,7 +47,7 @@ public class Sudoku {
         else if(i >= n)
             return true;            
         else if(sudo[i][j] != 0) 
-            return solve_sudoku(i, j + 1);
+            return solve_sudoku(j+1 < n ? i : i+1, j+1 < n ? j+1 : 0);
         else {
             for(int x = 1; x <= n; x++) {
                 if(!insert(i, j, x)) continue;
