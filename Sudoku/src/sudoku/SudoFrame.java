@@ -1070,8 +1070,12 @@ public class SudoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        boolean f = false;
+        for(int cnt = n*n-1; cnt >= 0 && !f; cnt--)
+            f = arr[cnt].getForeground().equals(Color.red);
         for(int cnt = n * n - 1; cnt >= 0; cnt--) {
-            arr[cnt].setText("");
+            if(!f || arr[cnt].getForeground().equals(Color.red))
+                arr[cnt].setText("");
             arr[cnt].setForeground(Color.black);
         }
     }//GEN-LAST:event_jButton2ActionPerformed

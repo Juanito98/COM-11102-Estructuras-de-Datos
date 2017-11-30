@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 public class Sudoku {
     
-    private static long INITIAL_TIME;
+    private static long INITIAL_TIME, TIME_LIMIT = 10000;
     private static final int n = 9, sqrt_n = 3;
     private static int[][] sudo;
     private static SetADT < Integer > row[] = new SetADT[n];
@@ -46,7 +46,7 @@ public class Sudoku {
     
     // Búsqueda exhaustiva para solucionar el sudoku
     private static boolean solve_sudoku(int i, int j) throws TimeoutException {
-        if(System.currentTimeMillis() - INITIAL_TIME > 10000)
+        if(System.currentTimeMillis() - INITIAL_TIME > TIME_LIMIT)
             throw new TimeoutException("Tiempo límite excedido. Posiblemente no tenga solución el sudoku");
         else if(i >= n)
             return true;            
