@@ -13,10 +13,12 @@ public class Sudoku {
     private static SetADT < Integer > column[] = new SetADT[n];
     private static SetADT < Integer > subgrid[] = new SetADT[n];
     
+    // Regresa el número del cuadrante de la casilla i,j [0, 9)
     private static int f(int i, int j) {
         return i/sqrt_n * sqrt_n + j/sqrt_n;
     }
     
+    // Borra el elemento insertado en la casilla i, j
     private static void erase(int i, int j) {
         try {
             int x = sudo[i][j];
@@ -29,6 +31,7 @@ public class Sudoku {
         }
     }
     
+    // Inserta x en la casilla i,j
     private static boolean insert(int i, int j, int x) {
         if(x < 1 || x > n) 
             return false;
@@ -41,6 +44,7 @@ public class Sudoku {
         return true;
     }
     
+    // Búsqueda exhaustiva para solucionar el sudoku
     private static boolean solve_sudoku(int i, int j) throws TimeoutException {
         if(System.currentTimeMillis() - INITIAL_TIME > 10000)
             throw new TimeoutException("Tiempo límite excedido. Posiblemente no tenga solución el sudoku");
@@ -58,6 +62,7 @@ public class Sudoku {
         }
     }
     
+    // Recibe el sudoku y regresa la solución a este
     public static int[][] solve(int matriz[][]) throws Exception {
         INITIAL_TIME = System.currentTimeMillis();
         sudo = new int[n][n];        
