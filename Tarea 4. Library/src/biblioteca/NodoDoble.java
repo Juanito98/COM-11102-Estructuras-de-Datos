@@ -7,13 +7,13 @@ package biblioteca;
 
 /**
  *
- * @author JSIGLERP
+ * @author juani
  */
-public class Nodo < T > {
+public class NodoDoble < T > {
     private T dato;
-    private Nodo siguiente;
+    private NodoDoble <T> siguiente, anterior;
 
-    public Nodo(T dato) {
+    public NodoDoble(T dato) {
         this.dato = dato;
         this.siguiente = null;
     }
@@ -22,7 +22,7 @@ public class Nodo < T > {
         return dato;
     }
 
-    public Nodo <T> getSiguiente() {
+    public NodoDoble < T > getSiguiente() {
         return siguiente;
     }
 
@@ -30,9 +30,19 @@ public class Nodo < T > {
         this.dato = dato;
     }
 
-    public void setSiguiente(Nodo siguiente) {
+    public void setSiguiente(NodoDoble <T> siguiente) {
         this.siguiente = siguiente;
     }
+
+    public NodoDoble<T> getAnterior() {
+        return anterior;
+    }
+
+    public void setAnterior(NodoDoble<T> anterior) {
+        this.anterior = anterior;
+    }
+    
+    
     
     
 }
