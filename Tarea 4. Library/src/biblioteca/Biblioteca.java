@@ -31,7 +31,12 @@ public class Biblioteca {
         lista.remove(arr[0]); // {36.5, HJQ}
         System.out.println("Eliminado.\n" + lista);
         
-        
+        DoublyLinkedOrderedList < Libro > listaDoble = new DoublyLinkedOrderedList<>();
+        for(int i = 0; i < n; i++)
+            listaDoble.add(arr[i]);
+        System.out.println(listaDoble);
+        listaDoble.remove(arr[0]); // {36.5, HJQ}
+        System.out.println("Eliminado.\n" + listaDoble);
         
     }
     

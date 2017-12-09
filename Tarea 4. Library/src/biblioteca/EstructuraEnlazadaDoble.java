@@ -134,7 +134,7 @@ public class EstructuraEnlazadaDoble < T > {
     @Override
     public String toString() {
         StringBuilder st = new StringBuilder();
-        st.append("EstructuraEnlazada{\n");
+        st.append("EstructuraEnlazadaDoble{\n");
         NodoDoble < T > it = primero;
         while(it != null) {
             st.append("\t").append(it.getDato().toString()).append('\n');

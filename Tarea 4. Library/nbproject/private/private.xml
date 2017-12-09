@@ -3,15 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/JSIGLERP/Documents/NetBeansProjects/Biblioteca/src/biblioteca/Biblioteca.java</file>
-            <file>file:/C:/Users/JSIGLERP/Documents/NetBeansProjects/Biblioteca/src/biblioteca/Nodo.java</file>
-            <file>file:/C:/Users/JSIGLERP/Documents/NetBeansProjects/Biblioteca/src/biblioteca/LinkedList.java</file>
-            <file>file:/C:/Users/JSIGLERP/Documents/NetBeansProjects/Biblioteca/src/biblioteca/ClaveDeCatalogo.java</file>
-            <file>file:/C:/Users/JSIGLERP/Documents/NetBeansProjects/Biblioteca/src/biblioteca/Libro.java</file>
-            <file>file:/C:/Users/JSIGLERP/Documents/NetBeansProjects/Biblioteca/src/biblioteca/EstructuraEnlazada.java</file>
-            <file>file:/C:/Users/JSIGLERP/Documents/NetBeansProjects/Biblioteca/src/biblioteca/ListADT.java</file>
-            <file>file:/C:/Users/JSIGLERP/Documents/NetBeansProjects/Biblioteca/src/biblioteca/LinkedOrderedList.java</file>
-            <file>file:/C:/Users/JSIGLERP/Documents/NetBeansProjects/Biblioteca/src/biblioteca/OrderedListADT.java</file>
+            <file>file:/C:/Users/juani/Desktop/GitHub%20Repositories/COM-11102-Estructuras-de-Datos/Tarea%204.%20Library/src/biblioteca/ListADT.java</file>
+            <file>file:/C:/Users/juani/Desktop/GitHub%20Repositories/COM-11102-Estructuras-de-Datos/Tarea%204.%20Library/src/biblioteca/OrderedListADT.java</file>
+            <file>file:/C:/Users/juani/Desktop/GitHub%20Repositories/COM-11102-Estructuras-de-Datos/Tarea%204.%20Library/src/biblioteca/EstructuraEnlazada.java</file>
+            <file>file:/C:/Users/juani/Desktop/GitHub%20Repositories/COM-11102-Estructuras-de-Datos/Tarea%204.%20Library/src/biblioteca/Biblioteca.java</file>
+            <file>file:/C:/Users/juani/Desktop/GitHub%20Repositories/COM-11102-Estructuras-de-Datos/Tarea%204.%20Library/src/biblioteca/LinkedList.java</file>
+            <file>file:/C:/Users/juani/Desktop/GitHub%20Repositories/COM-11102-Estructuras-de-Datos/Tarea%204.%20Library/src/biblioteca/EstructuraEnlazadaDoble.java</file>
+            <file>file:/C:/Users/juani/Desktop/GitHub%20Repositories/COM-11102-Estructuras-de-Datos/Tarea%204.%20Library/src/biblioteca/Nodo.java</file>
+            <file>file:/C:/Users/juani/Desktop/GitHub%20Repositories/COM-11102-Estructuras-de-Datos/Tarea%204.%20Library/src/biblioteca/ListIterator.java</file>
+            <file>file:/C:/Users/juani/Desktop/GitHub%20Repositories/COM-11102-Estructuras-de-Datos/Tarea%204.%20Library/src/biblioteca/NodoDoble.java</file>
+            <file>file:/C:/Users/juani/Desktop/GitHub%20Repositories/COM-11102-Estructuras-de-Datos/Tarea%204.%20Library/src/biblioteca/LinkedOrderedList.java</file>
         </group>
     </open-files>
 </project-private>
